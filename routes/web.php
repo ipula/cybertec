@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@addCv')->name('cv');
+Route::get('/home', 'HomeController@getCv')->name('getcv');
+Route::get('/view/{id}', 'HomeController@viewCv')->name('viewcv');
 

@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+//        return view('home');
     }
 
     public function addCv(CandidateReq $request)
@@ -49,7 +49,7 @@ class HomeController extends Controller
         $candidate->accName = $request->accName;
         $candidate->bankName = $request->bankName;
         $candidate->branch = $request->branch;
-        $candidate->cv_path = '/sadas';
+        $candidate->cv_path = '/test';
 
 
         $cv=$request->fileToUpload;
@@ -66,5 +66,14 @@ class HomeController extends Controller
         }else{
 
         }
+    }
+
+    public function getCv(){
+        $candidate=Candidates::paginate(10);
+        return view('home')->with('users', $candidate);
+    }
+    public function viewCv($id=null){
+        $candidate=Candidates::find($id);
+        return view('viewCv')->with('user', $candidate);
     }
 }
